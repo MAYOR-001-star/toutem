@@ -1,10 +1,10 @@
+import Layout from "./components/Layout"
+
 const App = () => {
   return (
-    <div>
-      <h1 className="text-4xl font-bold text-blue-500 underline">
-        Tailwind is working 🚀
-      </h1>
-    </div>
+    <>
+      <Layout />
+    </>
   )
 }
 
