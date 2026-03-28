@@ -1,6 +1,37 @@
 @import "tailwindcss";
 
+/* Regular */
+@font-face {
+    font-family: "SF Pro Display";
+    src: url("./assets/fonts/SFPRODISPLAYREGULAR.OTF") format("truetype");
+    font-weight: normal; /* 400 */
+    font-style: normal;
+}
+
+/* Medium */
+@font-face {
+    font-family: "SF Pro Display";
+    src: url("./assets/fonts/SFPRODISPLAYMEDIUM.OTF") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Bold */
+@font-face {
+    font-family: "SF Pro Display";
+    src: url("./assets/fonts/SFPRODISPLAYBOLD.OTF") format("truetype");
+    font-weight: bold; /* 700 */
+    font-style: normal;
+}
+
+/* Semibold Italic */
+@font-face {
+    font-family: "SF Pro Display";
+    src: url("./assets/fonts/SFPRODISPLAYSEMIBOLDITALIC.OTF") format("truetype");
+    font-weight: 600;
+    font-style: italic;
+}
+
 * {
-    margin: 0;
-    padding: 0;
+    font-family: "SF Pro Display", sans-serif;
 }
