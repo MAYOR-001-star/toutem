@@ -1,15 +1,17 @@
-import { Outlet } from "@tanstack/react-router"
-import Footer from "./Footer"
-import Navbar from "./Navbar"
+import { Outlet } from "@tanstack/react-router";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 const Layout = () => {
     return (
-        <>
+        <div className="flex flex-col min-h-screen">
             <Navbar />
-            <Outlet />
+            <main className="flex-grow">
+                <Outlet />
+            </main>
             <Footer />
-        </>
-    )
-}
+        </div>
+    );
+};
 
-export default Layout
+export default Layout;

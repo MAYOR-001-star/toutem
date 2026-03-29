@@ -1,38 +1,36 @@
-import { StrictMode } from 'react'
-import ReactDOM from 'react-dom/client'
-import { RouterProvider, createRouter, createRootRoute } from '@tanstack/react-router'
-import { homeRoute } from './pages/Home'
-import { aboutRoute } from './pages/About'
-import { shopRoute } from './pages/Shop'
-import { blogRoute } from './pages/Blog'
-import './index.css'
-import App from './App'
+import { StrictMode } from 'react';
+import ReactDOM from 'react-dom/client';
+import { RouterProvider, createRouter, createRootRoute, createRoute } from '@tanstack/react-router';
+import './index.css';
+import App from './App';
+import HomePage from './pages/HomePage';
 
 declare module '@tanstack/react-router' {
   interface Register {
-    router: typeof router
+    router: typeof router;
   }
 }
 
 export const rootRoute = createRootRoute({
-  component: App
-})
+  component: App,
+});
 
-const routeTree = rootRoute.addChildren([
-  homeRoute,
-  aboutRoute,
-  shopRoute,
-  blogRoute
-])
+const indexRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/',
+  component: HomePage,
+});
 
-const router = createRouter({ routeTree })
+const routeTree = rootRoute.addChildren([indexRoute]);
 
-const rootElement = document.getElementById('root')!
+const router = createRouter({ routeTree });
+
+const rootElement = document.getElementById('root')!;
 if (!rootElement.innerHTML) {
-  const root = ReactDOM.createRoot(rootElement)
+  const root = ReactDOM.createRoot(rootElement);
   root.render(
     <StrictMode>
       <RouterProvider router={router} />
-    </StrictMode>,
-  )
+    </StrictMode>
+  );
 }
