@@ -74,13 +74,13 @@ const Navbar = () => {
             {/* Mobile Menu - Full Screen */}
             {isOpen && (
                 <div
-                    className="fixed inset-0 bg-white w-full h-full flex flex-col items-center justify-center md:hidden z-10">
+                    className={`${theme === "dark" ? "bg-[#1F2937]" : "bg-white"} fixed inset-0 w-full h-full flex flex-col items-center justify-center md:hidden z-10`}>
                     <div className="flex flex-col items-center gap-8">
                         {links.map((link) => (
                             <a
                                 key={link.url}
                                 href={link.href}
-                                className="text-2xl font-semibold cursor-pointer"
+                                className={`${theme === "dark" ? "text-white" : "text-black"} text-2xl font-semibold cursor-pointer`}
                                 onClick={() => setIsOpen(false)} // Close menu on link click
                             >
                                 {link.url}
