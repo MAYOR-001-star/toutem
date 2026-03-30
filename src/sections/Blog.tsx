@@ -1,4 +1,7 @@
+import { useTheme } from "../components/ThemeContext";
+
 const BlogSection = () => {
+    const { theme } = useTheme();
     type BlogCard = {
         img: string;
         title: string;
@@ -27,13 +30,13 @@ const BlogSection = () => {
         }
     ]
     return (
-        <section id="blog" className="py-16 sm:py-20 text-center">
+        <section id="blog" className={`${theme === "dark" ? "bg-[#1F2937]" : "bg-white"} py-16 sm:py-20 text-center`}>
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <h1 className="text-4xl md:text-5xl font-bold text-[#5FD788] mb-12">BLOG</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {blogCards.map((card: BlogCard, index: number) => (
-                        <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col">
-                            <img src={card.img} alt={card.title} className="w-full h-48 object-cover"/>
+                        <div key={index} className={`${theme === "dark" ? "bg-[#374151]" : "bg-white"} rounded-lg shadow-lg overflow-hidden flex flex-col`}>
+                            <img src={card.img} alt={card.title} className="w-full h-48 object-cover" />
                             <div className="p-6 text-left flex flex-col flex-grow">
                                 <h3 className="text-xl font-semibold text-[#5FD788] pb-3 border-b-2 border-gray-100">
                                     {card.title}

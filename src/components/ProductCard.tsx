@@ -12,12 +12,12 @@ const ProductCard = ({
     tag,
 }: ProductCardProps) => {
     return (
-        <div className="bg-white relative">
-            <div className="bg-[#F5F5F5] flex items-center justify-center overflow-hidden">
+        <div className="relative">
+            <div className="bg-[#F5F5F5] flex items-center justify-center overflow-hidden rounded-tr-[1.50rem] rounded-bl-[1.50rem] ">
                 <img src={image} alt={title} className="w-[23.44rem] h-[24.38rem] object-contain" />
             </div>
 
-            <div className="absolute bottom-3 pt-[0.81em] pb-[0.63em] px-[0.94em] rounded-tr-[2.50rem] rounded-bl-[2.50rem] bg-[#F4F2F0] opacity-75">
+            <div className="absolute bottom-0 pt-[0.81em] pb-[0.63em] px-[0.94em] rounded-tr-[1.50rem] rounded-bl-[1.50rem] bg-[#F4F2F0] opacity-75">
                 <div className="flex items-center justify-between">
                     <div>
                         <div className="flex items-center gap-2">

@@ -3,7 +3,7 @@ import { useTheme } from "../components/ThemeContext";
 const HomeSection = () => {
     const { theme } = useTheme()
     return (
-        <section id="home" className="pb-24 px-6 md:px-12 lg:px-[11rem] bg-[#FAFAFA] overflow-hidden">
+        <section id="home" className={`pb-24 px-6 md:px-12 lg:px-[11rem] ${theme === "dark" ? "bg-[#1F2937]" : "bg-[#FAFAFA]"} overflow-hidden`}>
             {/* Hero Section */}
             <div className="flex flex-col-reverse lg:flex-row items-center justify-between mb-24 w-full gap-12 lg:gap-0">
                 {/* Left side: Content */}

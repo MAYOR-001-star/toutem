@@ -1,5 +1,6 @@
 import Button from "./Button.tsx";
 import ProductCard, { type ProductCardProps } from "./ProductCard.tsx";
+import { useTheme } from "./ThemeContext.tsx";
 
 interface FeaturedSectionProps {
     title: string;
@@ -16,10 +17,11 @@ const FeaturedSection = ({
     products,
     sectionId
 }: FeaturedSectionProps) => {
+    const { theme } = useTheme()
     return (
-        <section 
+        <section
             id={sectionId}
-            className="relative flex flex-col lg:flex-row items-center justify-between px-6 py-16 md:px-12 md:py-24 lg:px-20 lg:py-40 bg-[#F8F8F8] overflow-hidden"
+            className={`relative flex flex-col lg:flex-row items-center justify-between px-6 py-16 md:px-12 md:py-24 lg:px-20 lg:py-40 ${theme === "dark" ? "bg-[#1F2937]" : "bg-[#F8F8F8]"} overflow-hidden`}
         >
             {/* Left Side - Content */}
             <div className="relative w-full lg:w-[30%] mb-12 lg:mb-0 text-center lg:text-left z-10">
@@ -32,10 +34,10 @@ const FeaturedSection = ({
             </div>
 
             {/* Background Decoration */}
-            <img 
-                src={bgImage} 
-                alt="decoration" 
-                className="absolute hidden lg:block w-[26.94rem] h-[38.38rem] right-[50%] lg:right-[70%] translate-x-1/2 lg:translate-x-0 bottom-0 opacity-50 lg:opacity-100 pointer-events-none" 
+            <img
+                src={bgImage}
+                alt="decoration"
+                className="absolute hidden lg:block w-[26.94rem] h-[38.38rem] right-[50%] lg:right-[70%] translate-x-1/2 lg:translate-x-0 bottom-0 opacity-50 lg:opacity-100 pointer-events-none"
             />
 
             {/* Right Side - Product Cards */}

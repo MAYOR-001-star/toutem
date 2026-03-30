@@ -1,27 +1,30 @@
+import { useTheme } from "./ThemeContext";
+
 const Footer = () => {
+    const { theme } = useTheme();
     const footerLinks = {
         "Customer Support": [
-            {title: "Shipping", href: "#shop"},
-            {title: "Free Return", href: "#shop"},
-            {title: "Track your Order", href: "#shop"},
-            {title: "Gift Cards", href: "#shop"},
+            { title: "Shipping", href: "#shop" },
+            { title: "Free Return", href: "#shop" },
+            { title: "Track your Order", href: "#shop" },
+            { title: "Gift Cards", href: "#shop" },
         ],
         "About Us": [
-            {title: "Our Values", href: "#about"},
-            {title: "Sustainability", href: "#about"},
-            {title: "Brand Ambassadors", href: "#about"},
-            {title: "Fitness Professionals", href: "#about"},
+            { title: "Our Values", href: "#about" },
+            { title: "Sustainability", href: "#about" },
+            { title: "Brand Ambassadors", href: "#about" },
+            { title: "Fitness Professionals", href: "#about" },
         ],
         "Customer Service": [
-            {title: "Help", href: "#about"},
-            {title: "Leader Support", href: "#about"},
-            {title: "Pleasant Grove Product Center", href: "#shop"},
-            {title: "Recall—Important Safety Information", href: "#shop"},
+            { title: "Help", href: "#about" },
+            { title: "Leader Support", href: "#about" },
+            { title: "Pleasant Grove Product Center", href: "#shop" },
+            { title: "Recall—Important Safety Information", href: "#shop" },
         ],
     };
 
     return (
-        <footer className="bg-[#F3F4F6] px-6 md:px-12 py-10">
+        <footer className={theme === "dark" ? "bg-[#9CA3AF] px-6 md:px-12 py-10" : "bg-[#F3F4F6] px-6 md:px-12 py-10"}>
             {/* Top Section */}
             <div className="mx-auto flex flex-col md:flex-row justify-between items-start gap-8">
                 {/* Logo */}

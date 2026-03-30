@@ -8,7 +8,7 @@ const ShopSection = () => {
             <BestSellers />
             <section
                 id="shop"
-                className="flex flex-col lg:flex-row items-stretch mt-[6.81rem]"
+                className="flex flex-col lg:flex-row items-stretch"
             >
                 {/* Left Side */}
                 <div

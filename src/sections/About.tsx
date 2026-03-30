@@ -1,6 +1,9 @@
+import { useTheme } from "../components/ThemeContext";
+
 const AboutSection = () => {
+    const { theme } = useTheme();
     return (
-        <section id="about" className="py-26 md:px-[11rem] bg-white lg:min-h-screen flex items-center">
+        <section id="about" className={`${theme === "dark" ? "bg-[#1F2937]" : "bg-white"} py-26 md:px-[11rem] lg:min-h-screen flex items-center`}>
             <div className="mx-auto flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-12 lg:gap-[14rem] w-full">
                 {/* Left side: Visuals - hidden on mobile/tablet */}
                 <div className="relative flex-1 hidden lg:flex items-center justify-between">

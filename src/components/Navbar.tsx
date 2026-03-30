@@ -23,9 +23,9 @@ const Navbar = () => {
 
     return (
         <nav
-            className="sticky top-0 bg-white z-30 flex justify-between items-center px-[1.69rem] py-[1.41em] border-b border-gray-200">
+            className={`${theme === "dark" ? "bg-[#1F2937] border-[#1F2937]" : "bg-white border-gray-200"} sticky top-0 z-30 flex justify-between items-center px-[1.69rem] py-[1.41em] border-b`}>
             <Link to="/" className="w-[6.38rem] h-[1.50rem] cursor-pointer">
-                <img src="/company-logo.svg" alt="company-logo" />
+                {theme === "dark" ? <img src="/logo.svg" alt="company-logo" /> : <img src="/company-logo.svg" alt="company-logo" />}
             </Link>
 
             {/* Desktop Links */}
@@ -34,7 +34,7 @@ const Navbar = () => {
                     <Link
                         key={link.href}
                         to={link.href}
-                        className="text-[0.75rem] font-semibold cursor-pointer"
+                        className={`${theme === "dark" ? "text-white" : "text-black"} text-[0.75rem] font-semibold cursor-pointer`}
                         activeProps={{
                             className: "lowercase",
                         }}
@@ -54,19 +54,20 @@ const Navbar = () => {
                             name="search"
                             className="bg-transparent outline-none flex-1 text-sm"
                         />
-                        <img src="/search.svg" alt="search-icon" className='h-2 w-2 cursor-pointer' />
+                        {theme === "dark" ? <img src="/search.svg" alt="search-icon" className='h-2 w-2 cursor-pointer' /> : <img src="/search-black.svg" alt="search-icon" className='h-2 w-2 cursor-pointer' />}
                     </div>
-                </div> : <img src="/search.svg" alt="search-icon" className='h-4 w-[0.88rem] cursor-pointer'
-                    onClick={() => setOpenSearch((prev) => !prev)} />}
+                </div> : theme === "dark" ? <img src="/search-black.svg" alt="search-icon" className='h-4 w-[0.88rem] cursor-pointer'
+                    onClick={() => setOpenSearch((prev) => !prev)} /> : <img src="/search.svg" alt="search-icon" className='h-4 w-[0.88rem] cursor-pointer'
+                        onClick={() => setOpenSearch((prev) => !prev)} />}
                 {theme === "dark" ? (
-                    <HiSun className="h-4 w-[0.88rem] cursor-pointer" onClick={toggleTheme} />
+                    <HiSun className="h-4 w-[0.88rem] text-white cursor-pointer" onClick={toggleTheme} />
                 ) : (
                     <HiMoon className="h-4 w-[0.88rem] cursor-pointer" onClick={toggleTheme} />
                 )}
 
                 {/* Hamburger/Close Button */}
                 <button className="md:hidden z-20 cursor-pointer" onClick={() => setIsOpen((prev) => !prev)}>
-                    <img src="/hamburger.svg" alt="menu-icon" className="h-[0.98rem] w-[1.6rem]" />
+                    {theme === "dark" ? <img src="/hamburger-dark.svg" alt="menu-icon" className="h-[0.98rem] w-[1.6rem]" /> : <img src="/hamburger.svg" alt="menu-icon" className="h-[0.98rem] w-[1.6rem]" />}
                 </button>
             </div>
 
