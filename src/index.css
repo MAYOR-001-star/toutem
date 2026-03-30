@@ -35,3 +35,7 @@
 * {
     font-family: "SF Pro Display", sans-serif;
 }
+
+section {
+    scroll-margin-top: 70px; /* Adjust this value to match your navbar's height */
+}

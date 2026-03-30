@@ -1,29 +1,27 @@
-import {Link} from "@tanstack/react-router";
-
 const Footer = () => {
     const footerLinks = {
         "Customer Support": [
-            {title: "Shipping", href: "/shipping"},
-            {title: "Free Return", href: "/free-return"},
-            {title: "Track your Order", href: "/track-your-order"},
-            {title: "Gift Cards", href: "/gift-cards"},
+            {title: "Shipping", href: "#shop"},
+            {title: "Free Return", href: "#shop"},
+            {title: "Track your Order", href: "#shop"},
+            {title: "Gift Cards", href: "#shop"},
         ],
         "About Us": [
-            {title: "Our Values", href: "/our-values"},
-            {title: "Sustainability", href: "/sustainability"},
-            {title: "Brand Ambassadors", href: "/brand-ambassadors"},
-            {title: "Fitness Professionals", href: "/fitness-professionals"},
+            {title: "Our Values", href: "#about"},
+            {title: "Sustainability", href: "#about"},
+            {title: "Brand Ambassadors", href: "#about"},
+            {title: "Fitness Professionals", href: "#about"},
         ],
         "Customer Service": [
-            {title: "Help", href: "/help"},
-            {title: "Leader Support", href: "/leader-support"},
-            {title: "Pleasant Grove Product Center", href: "/product-center"},
-            {title: "Recall—Important Safety Information", href: "/recall-safety-info"},
+            {title: "Help", href: "#about"},
+            {title: "Leader Support", href: "#about"},
+            {title: "Pleasant Grove Product Center", href: "#shop"},
+            {title: "Recall—Important Safety Information", href: "#shop"},
         ],
     };
 
     return (
-        <footer className="bg-gray-100 px-6 md:px-12 py-10">
+        <footer className="bg-[#F3F4F6] px-6 md:px-12 py-10">
             {/* Top Section */}
             <div className="mx-auto flex flex-col md:flex-row justify-between items-start gap-8">
                 {/* Logo */}
@@ -36,7 +34,7 @@ const Footer = () => {
                 </div>
 
                 {/* Links Sections */}
-                <div className="flex flex-col md:flex-row text-center gap-8 md:gap-16 mx-auto">
+                <div className="flex flex-col md:flex-row text-center mx-auto gap-8 md:gap-16">
                     {Object.entries(footerLinks).map(([title, links]) => (
                         <div key={title}>
                             <h3 className="text-green-600 font-semibold mb-3">
@@ -45,9 +43,9 @@ const Footer = () => {
                             <ul className="space-y-1 text-gray-600 text-[0.75rem]">
                                 {links.map((link) => (
                                     <li key={link.title}>
-                                        <Link to={link.href} className="hover:underline">
+                                        <a href={link.href} className="hover:underline cursor-pointer">
                                             {link.title}
-                                        </Link>
+                                        </a>
                                     </li>
                                 ))}
                             </ul>

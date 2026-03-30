@@ -4,6 +4,8 @@ import { RouterProvider, createRouter, createRootRoute, createRoute } from '@tan
 import './index.css';
 import App from './App';
 import HomePage from './pages/HomePage';
+import { ThemeProvider } from './components/ThemeContext';
+
 
 declare module '@tanstack/react-router' {
   interface Register {
@@ -30,7 +32,9 @@ if (!rootElement.innerHTML) {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
     <StrictMode>
-      <RouterProvider router={router} />
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </StrictMode>
   );
 }
