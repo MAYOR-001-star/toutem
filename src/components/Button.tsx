@@ -8,11 +8,11 @@ type ButtonProps = {
 }
 
 const Button = ({
-                    title,
-                    variant = "dark",
-                    className = "",
-                    onClick,
-                }: ButtonProps) => {
+    title,
+    variant = "dark",
+    className = "",
+    onClick,
+}: ButtonProps) => {
     const baseStyles =
         "w-[13.38rem] py-[0.75em] px-[1.88em] rounded-lg font-semibold tracking-wider transition-all duration-200"
 

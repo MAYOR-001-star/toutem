@@ -19,7 +19,7 @@ const FeaturedSection = ({
     return (
         <section 
             id={sectionId}
-            className="relative flex flex-col lg:flex-row items-center justify-between px-6 py-16 md:px-12 md:py-24 lg:px-20 lg:py-28 bg-[#F8F8F8] overflow-hidden"
+            className="relative flex flex-col lg:flex-row items-center justify-between px-6 py-16 md:px-12 md:py-24 lg:px-20 lg:py-40 bg-[#F8F8F8] overflow-hidden"
         >
             {/* Left Side - Content */}
             <div className="relative w-full lg:w-[30%] mb-12 lg:mb-0 text-center lg:text-left z-10">
