@@ -1,23 +1,73 @@
+import { useRef } from "react";
+import gsap from "gsap";
 import { useTheme } from "../components/ThemeContext";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import SplitText from "gsap/SplitText";
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const HomeSection = () => {
-    const { theme } = useTheme()
+    const { theme } = useTheme();
+    const containerRef = useRef<HTMLElement>(null);
+
+    useGSAP(() => {
+        const split = SplitText.create(".home-subtitle", { type: "lines" });
+
+        // Wrap each line so overflow clipping works cleanly
+        split.lines.forEach((line: Element) => {
+            const wrapper = document.createElement("div");
+            wrapper.style.overflow = "hidden";
+            line.parentNode?.insertBefore(wrapper, line);
+            wrapper.appendChild(line);
+        });
+
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+        tl.from(".home-blob", { x: 750, duration: 1 })
+            .from(".home-title", { x: -750, duration: 1 }, "-=0.6")
+            .from(split.lines, {
+                yPercent: 100,
+                opacity: 0,
+                duration: 0.8,
+                stagger: 0.1,
+            }, "-=0.4");
+
+        // Product cards ScrollTrigger — standalone, outside the timeline
+        gsap.from(".product-cards", {
+            scrollTrigger: {
+                trigger: ".product-cards",
+                start: "top 80%",
+                end: "+=500",
+                scrub: true,
+            },
+            x: 750,
+            ease: "sine.inOut",
+        })
+
+        return () => split.revert();
+    }, { scope: containerRef, dependencies: [] });
+
     return (
-        <section id="home" className={`pb-24 px-6 md:px-12 lg:px-[11rem] ${theme === "dark" ? "bg-[#1F2937]" : "bg-[#FAFAFA]"} overflow-hidden`}>
+        <section
+            ref={containerRef}
+            id="home"
+            className={`pb-24 px-6 md:px-12 lg:px-[11rem] ${theme === "dark" ? "bg-[#1F2937]" : "bg-[#FAFAFA]"} overflow-hidden`}
+        >
             {/* Hero Section */}
             <div className="flex flex-col-reverse lg:flex-row items-center justify-between mb-24 w-full gap-12 lg:gap-0">
                 {/* Left side: Content */}
-                <div className="flex-1 space-y-4 lg:space-y-8 z-10 text-center lg:text-left mt-8 lg:mt-0">
+                <div className="flex-1 space-y-4 lg:space-y-8 z-10 text-center lg:text-left mt-8 lg:mt-0 home-title">
                     <h1 className="text-[2.5rem] md:text-6xl lg:text-[5rem] font-bold text-[#55D283] leading-tight">
                         Pear kiwi<br />& Mint
                     </h1>
-                    <p className="text-gray-400 font-medium text-xs md:text-sm max-w-[22rem] mx-auto lg:mx-0 leading-relaxed">
+                    <p className="text-gray-400 font-medium text-xs md:text-sm max-w-[22rem] mx-auto lg:mx-0 leading-relaxed home-subtitle">
                         They say that home is where the heart is. Perhaps that's why a feeling of loss is so apparent when you are far from the ones you love.
                     </p>
                 </div>
 
                 {/* Right side: Visuals */}
-                <div className="relative flex-1 flex items-center justify-center lg:justify-end w-full">
+                <div className="relative flex-1 flex items-center justify-center lg:justify-end w-full home-blob">
                     <div className="relative w-full flex justify-center lg:justify-end items-center my-[2rem] md:my-[6rem] lg:my-0">
                         {/* Blob for Mobile/Tablet */}
                         <img
@@ -40,7 +90,8 @@ const HomeSection = () => {
                     </div>
                 </div>
             </div>
-            <div className="md:pt-20 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0">
+
+            <div className="md:pt-20 mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-0 product-cards">
                 {["Essential oils", "Natural cosmetics", "Diffusers", "Aromatherapy"].map((title) => (
                     <div
                         key={title}
